@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<timestamp key="date" datePattern="yyyyMMdd" />
+
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file> logs/spectre-${date}.log </file>
+		<append>true</append>
+		<encoder>
+			<pattern>%d{yyyyMMddHHmmss.SSS};%thread;%.-1level;%msg;%n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="info">
+		<appender-ref ref="FILE" />
+	</root>
+
+</configuration>
