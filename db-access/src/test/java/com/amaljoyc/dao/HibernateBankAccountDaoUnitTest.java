@@ -83,4 +83,24 @@ public class HibernateBankAccountDaoUnitTest {
 		verify(query, times(1)).executeUpdate();
 	}
 
+	@Test
+	public void testIbanInEditAccount() {
+		String iban = "sample_iban";
+		when(sessionFactory.getCurrentSession()).thenReturn(session);
+		when(session.get(any(Class.class), any(Integer.class))).thenReturn(account);
+		accountDao.editAccount(PK, "iban", iban);
+		verify(account, times(1)).setIban(iban);
+		verify(account, times(0)).setBic(iban);
+	}
+
+	@Test
+	public void testBicInEditAccount() {
+		String bic = "sample_bic";
+		when(sessionFactory.getCurrentSession()).thenReturn(session);
+		when(session.get(any(Class.class), any(Integer.class))).thenReturn(account);
+		accountDao.editAccount(PK, "bic", bic);
+		verify(account, times(1)).setBic(bic);
+		verify(account, times(0)).setIban(bic);
+	}
+
 }

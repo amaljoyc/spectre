@@ -14,4 +14,6 @@ public interface BankAccountDao {
 
 	void deleteAccount(int id);
 
+	void editAccount(int id, String type, String value);
+
 }

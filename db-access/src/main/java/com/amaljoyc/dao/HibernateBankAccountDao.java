@@ -33,4 +33,15 @@ public class HibernateBankAccountDao extends AbstractDao<Integer, BankAccount> i
 		query.executeUpdate();
 	}
 
+	public void editAccount(int id, String type, String value) {
+		BankAccount account = findById(id);
+		if (account != null) {
+			if (type.equals("iban")) {
+				account.setIban(value);
+			} else if (type.equals("bic")) {
+				account.setBic(value);
+			}
+		}
+	}
+
 }

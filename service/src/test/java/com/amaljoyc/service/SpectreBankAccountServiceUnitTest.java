@@ -62,23 +62,11 @@ public class SpectreBankAccountServiceUnitTest {
 	}
 
 	@Test
-	public void testIbanInEditAccount() {
-		String iban = "sample_iban";
-		when(accountDao.findById(PK)).thenReturn(account);
-		accountService.editAccount(PK, "iban", iban);
-		verify(accountDao, times(1)).findById(PK);
-		verify(account, times(1)).setIban(iban);
-		verify(account, times(0)).setBic(iban);
-	}
-
-	@Test
-	public void testBicInEditAccount() {
-		String bic = "sample_bic";
-		when(accountDao.findById(PK)).thenReturn(account);
-		accountService.editAccount(PK, "bic", bic);
-		verify(accountDao, times(1)).findById(PK);
-		verify(account, times(1)).setBic(bic);
-		verify(account, times(0)).setIban(bic);
+	public void testEditAccount() {
+		String sample_type = "iban";
+		String sample_value = "sample_iban";
+		accountService.editAccount(PK, sample_type, sample_value);
+		verify(accountDao, times(1)).editAccount(PK, sample_type, sample_value);
 	}
 
 }

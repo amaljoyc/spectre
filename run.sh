@@ -1,1 +1,1 @@
-mvn clean package tomcat7:run
+mvn clean install tomcat7:run

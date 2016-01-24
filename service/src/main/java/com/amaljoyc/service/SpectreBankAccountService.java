@@ -8,13 +8,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.amaljoyc.dao.BankAccountDao;
 import com.amaljoyc.model.BankAccount;
 
 @Service("bankAccountService")
-@Transactional
 public class SpectreBankAccountService implements BankAccountService {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(SpectreBankAccountService.class);
@@ -52,16 +50,8 @@ public class SpectreBankAccountService implements BankAccountService {
 	}
 
 	public void editAccount(int id, String type, String value) {
-		BankAccount account = accountDao.findById(id);
-		LOGGER.info("Account details `before` EDIT: {}", account);
-		if (account != null) {
-			if (type.equals("iban")) {
-				account.setIban(value);
-			} else if (type.equals("bic")) {
-				account.setBic(value);
-			}
-		}
-		LOGGER.info("Account details `after` EDIT: {}", account);
+		accountDao.editAccount(id, type, value);
+		LOGGER.info("Successfully edited the field `{}` for the bank account with id: {}", type, id);
 	}
 
 }
