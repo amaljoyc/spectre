@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "com.amaljoyc.config" })
+@ComponentScan({ "com.amaljoyc.dao" })
 @PropertySource(value = { "classpath:spectre.properties" })
 public class HibernateConfig {
 

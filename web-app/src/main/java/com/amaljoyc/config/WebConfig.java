@@ -11,8 +11,8 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan({ "com.amaljoyc" })
-public class AppConfig extends WebMvcConfigurerAdapter {
+@ComponentScan({ "com.amaljoyc.controller" })
+public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
